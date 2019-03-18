@@ -1,0 +1,170 @@
+/* #f9f9f9; */
+
+
+body {
+    position: relative;
+    font-family: "proxima nova", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.4;
+    background-color: #f9f9f9;
+    min-width: 100%;
+    min-height: 100%;
+    color: #777;
+    overflow: auto;
+}
+
+.content {
+    min-height: 100%;
+    min-width: 300px;
+    display: inline-block;
+    width: 100%;
+    color:#777;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+
+
+.applogin-banner{
+    position: relative;
+    margin-bottom: 10px;
+    min-width: 300px;
+}
+
+.applogin-banner .applogin-background {
+    background-color: #fff;
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2px 1px rgba(175, 175, 175, 0.3);
+}
+
+.applogin-banner .applogin-container {
+    position: relative;
+    max-width: 400px;
+    min-width: 300px;
+    margin:  auto;
+    padding: 20px 0 10px 0 ;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.applogin-container h1 {
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 26px;
+    padding-bottom: 0px;
+}
+
+.applogin-app-logo {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    max-height: 26px;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-align: center
+
+}
+
+.borde{
+    border: solid 1px; 
+    background-color: #fff;
+    border-color: #ddd #ddd #d8d8d8;
+    box-shadow: 0 2px 0 rgba(175, 175, 175, 0.12);
+}
+
+.FormAction {
+    color: #777;
+    margin: 100px auto 8px;
+}
+
+.auth-org-logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+    max-height: 40px;
+}
+
+.auth-header {
+    border-bottom-color: #ddd;
+    padding: 30px 90px 30px 90px;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    z-index: 10;
+    -webkit-transition: padding-bottom 0.4s;
+    transition: padding-bottom 0.4s;
+    width: 400px;
+}
+
+.beacon-container {
+    position: absolute;
+    bottom: -42px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 85px;
+    height: 85px;
+    -webkit-transform: scale(0, 0);
+    transform: scale(0, 0);
+}
+
+.form-check-label, .auth-footer a {
+    color: #777;
+    font-size: 13px;
+}
+
+.FormElements {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    padding: 0 0 14px;
+    border-radius: 0;
+    border: none;
+}
+
+.FormHead {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-top: 10px;
+    text-align: center;
+    text-transform: none;
+    margin: 0 0 15px;
+    padding: 0;
+}
+
+.form-control {
+    background-color: #fff;
+    border-color: #bbb;
+    border: 1px solid #bbb;
+    display: inline;
+    /* float: left; */
+    border-radius: 3px;
+    width: 100%; 
+
+}
+
+.auth-content{
+    padding: 20px 42px;
+}
+
+
+

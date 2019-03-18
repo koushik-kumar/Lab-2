@@ -1,0 +1,262 @@
+body {
+  margin: 0;
+  padding: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; */
+    font-family: "LatoWeb","Helvetica Neue",Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.header {
+  position: absolute;
+  height: 40px;
+  width: 100%;
+  background-color: yellowgreen;
+  
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.Logo {
+  width: 84px;
+  padding: 30% 0;
+}
+
+.logomark_container {
+  background-color: rgb(255, 255, 255);
+  height: 85px;
+  width: 84px;
+}
+
+.sidebar {
+  
+  /* margin-left: -15px; */
+  
+  background-color: #0055a2;
+  height: 100vh;
+  
+}
+
+.list-group {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+} 
+
+.list-group-item{
+      padding: 0.4375rem 0;
+      text-align: center;
+      display: block;
+      background-color: #0055a2
+}
+
+i {
+  color: white;
+  margin: 0 auto;
+  font-size: 24px;
+  
+}
+
+a {
+  color: white;
+  text-decoration: none;
+} 
+
+.profilePic {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+}
+
+.profilePicinTray {
+  margin: auto;
+  width: 70px;
+  /* height: 256px; */
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  /* border: 0; */
+}
+
+.profilePicinTray-div{
+  text-align: center;
+}
+
+.MainContent{
+  padding-left: 90px;
+}
+
+.label{
+  opacity: 1;
+  position: static;
+  line-height: 1.4;
+  margin: 3px 0 0;
+  /* background: transparent; */
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  font-size: .875rem;
+  text-decoration: underline; 
+  color: white;
+}
+
+.SecondNavigation {
+  color:black;
+  position: absolute;
+    bottom:10px;
+    padding-left: 40%;
+    /* z-index: auto; */
+    
+}
+.AccountTray {
+  position: relative;
+  padding-top: 15px;
+  padding-left: 100px;
+  width: 364px;
+  border: solid 4px;
+  /* text-align: center; */
+
+  /* z-index: 99; */
+  display: block;
+  max-width: 100vw;
+    max-height: 100vh;
+}
+
+.CloseIcon-div{
+text-align: right;
+}
+
+.closeIcon i{
+  padding-right: 0;
+  color: black;
+}
+
+.TrayList{ 
+  padding-left: 25px;
+}
+
+.TrayList li {
+  list-style: none;
+  /* padding-left: 0; */
+  padding-top: 8px;
+  padding-bottom: 8px;
+  
+}
+
+.TrayList a{
+  margin: 0 ;
+  color: #008ee2;
+  text-decoration: none;
+
+    
+}
+
+.logout-div{
+  text-align: center;
+  padding: 20px 0px;
+  
+}
+
+.logout-btn {
+  /* text-align: center; */
+  font-size: 14px;
+/* margin: 1.5rem 0px; cursor: pointer; */
+border-radius: 4px;
+padding: 3px 4px 4px 3px;
+background-color:#F5F5F5;
+
+}
+
+
+
+.profileName {
+  text-align: center;
+  font-size: 1.4em;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.Courses{
+  padding-top: 25px;
+  font-size: 1.4em;
+  padding-left: 25px;
+  padding-bottom: 0;
+  text-align: left;
+  /* font-weight: 2000; */
+  line-height: 1.5;
+  font-weight: normal;
+}
+
+
+hr {
+  margin: 20px 0;
+  border-top: 1px solid #C7CDD1;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+TrayList {
+  margin: 20px 0;
+  /* margin: 0.75rem 0px; */
+}
+
+/* ========================================= */
+
+.Dashboard-header_title {
+  padding-left: 0px;
+  /* margin: 6px 0; */
+  /* font-size: 28px; */
+}
+
+.Dashboard-Options{
+  color: grey;
+}
+
+
+
+
+.bord{
+  /* border-right: solid 1px; */
+  /* border-color: green; */
+  border-right-style: groove;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* id:"960704"
+name:"Computer Engineering Department, Graduate Admittees"
+account_id:"106670"
+uuid:"9BXXZOvuE2co3rawv93aSaW2S8Fs3dro7vDdvqbv"
+start_at:"2013-01-23T08:00:00Z"
+grading_standard_id:null
+is_public:false
+created_at:"2013-01-16T18:47:03Z"
+course_code:"Computer Engineering Department, Graduate Admittees"
+default_view:"wiki"
+root_account_id:"89550"
+enrollment_term_id:"1722"
+end_at:"2013-05-14T06:55:00Z"
+public_syllabus:false
+public_syllabus_to_auth:false
+storage_quota_mb:1000
+is_public_to_auth_users:false
+term:Object
+apply_assignment_group_weights:false
+calendar:Object
+time_zone:"America/Los_Angeles"
+blueprint:false
+hide_final_grades:false
+workflow_state:"available"
+restrict_enrollments_to_course_dates:false */
