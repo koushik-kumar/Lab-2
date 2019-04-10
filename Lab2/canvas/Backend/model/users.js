@@ -15,6 +15,9 @@ const UserSchema = new mongoose.Schema({
     LastName: {
         type: String
     },
+    Avatar: {
+        type: String
+    },
     Email: {
         type: String
     },
@@ -59,13 +62,33 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         default :   Date.now
     },
-    courses: {
-        type: Array
-    },
+    // courses: {
+    //     type: Array
+    // },
     coursesEnrolled: {
         type: Array
+    },
+    Links: {
+        type: String
     }
 });
+
+// UserSchema.pre('save', async function(next){
+//     const registerUser = this;
+
+//     //Hashing the password with salt rounds of 10
+//     const hashed = await bcrypt.hash(registerUser.password, 10);
+//     registerUser.password = hashed;
+//     next();
+//   });
+
+//   UserSchema.methods.isValidPassword = async function(loginPassword){
+//     const user = this;
+//     const compare = await bcrypt.compare(loginPassword, user.password);
+//     return compare;
+//   }
+
+
 
 var Users = mongoose.model("User", UserSchema);
 

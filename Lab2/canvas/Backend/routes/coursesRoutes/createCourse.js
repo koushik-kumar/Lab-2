@@ -26,6 +26,7 @@ routerr.post('/createCourse', (req, res) => {
         message: 'User doesnt exist.'
       })
     } else if (user) {
+
       var now = new Date().now;
       var course = new Courses({
         "CUID": req.body.CUID,
@@ -36,28 +37,39 @@ routerr.post('/createCourse', (req, res) => {
         "CourseDescription": req.body.description,
         "CourseRoom": req.body.room,
         "CourseCapacity": req.body.capacity,
-        "seatsFilled":0,
         "WaitlistCapacity": req.body.waitlist,
+        "StudentsEnrolled" : 0,
         "CourseTerm": req.body.term,
         "cardColor": req.body.color,
         "created": now
       })
 
 
-      // connection.query('INSERT INTO Users SET ?',newUser, function (error, results, fields) {
       course.save().then((course) => {
+        
         console.log("Updating User data")
-        Users.update(
-          {"$push": {
-              "CourseEnrolled" : {
+        console.log("Successfully Added a course")
+
+        Users.findOneAndUpdate(
+          {UserID: req.body.UserID},
+          {$push: {
+              coursesEnrolled : {
                   "CourseID": req.body.CourseID,
-                  "TeacherID": req.body.TeacherID,
+                  "TeacherID": req.body.UserID,
                   "EnrollmentStatus" : "Course Teacher"
               }
             }
+          }, function(err, user){
+            if(err){
+            console.log(err)
+            } else
+            console.log(user)
           }
         )
-        console.log("Successfully Added a course")
+
+        // sessionStorage.setItem('courseCards', (sessionStorage.getItem('courseCards')). )
+        // 
+
 
         res.json({
           status:true,
@@ -71,6 +83,8 @@ routerr.post('/createCourse', (req, res) => {
         res.end("Error in Course creation :" + error.message);
       })
 
+
+      
 
     }
   })

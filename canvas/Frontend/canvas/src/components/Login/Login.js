@@ -179,7 +179,8 @@ export default class Login extends Component {
 
     render() {
         let redirectVar = null;
-        if(cookie.load('userID')){
+        // if(cookie.load('userID')){
+        if(localStorage.getItem('UserID')){
             redirectVar = <Redirect to= "./../Dashboard/dashboard.js"/>
         }
 

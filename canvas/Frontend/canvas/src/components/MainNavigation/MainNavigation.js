@@ -82,12 +82,12 @@ else{
 
   render() {
     let redirectVar = null;
-        if (!cookie.load('cookie')) {
+        if (!localStorage.getItem('UserID')) {
             redirectVar = <Redirect to="/login" />
         }
 
     let renderSidebar = false;
-        if (cookie.load('userID')){
+        if (localStorage.getItem('UserID')){
           renderSidebar = true;
         }
     return (

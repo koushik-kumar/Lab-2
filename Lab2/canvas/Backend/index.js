@@ -1,12 +1,20 @@
 //import the require dependencies
+
+
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var cors = require('cors');
+var morgan = require('morgan');
 // var mysql = require('mysql');
 app.set('view engine', 'ejs');
+
+const passport = require('passport');
+app.use(passport.initialize());
+require('./auth/passport')(passport);
+
 
 
 var mongoose = require('./config/mongoDBConfig');
@@ -18,8 +26,7 @@ var Assignments = require('./model/assignments');
 var Quiz = require('./model/quiz');
 var Questions = require('./model/questions');
 var QResponse = require('./model/qResponse');
-
-
+var waitlist = require('./routes/coursesRoutes/waitlist')
 var login = require('./routes/loggingRoutes/login')
 var register = require('./routes/loggingRoutes/register');
 var createCourse = require('./routes/coursesRoutes/createCourse');
@@ -46,6 +53,7 @@ app.use(session({
     activeDuration: 5 * 60 * 1000
 }));
 
+app.use(morgan('dev'));
 // app.use(bodyParser.urlencoded({
 //     extended: true
 //   }));
@@ -67,8 +75,9 @@ app.use('/',login);
 app.use('/', createCourse);
 app.use('/', getCourses);
 app.use('/', enrollCourse);
-app.post('/updateProfile', updateProfile.updateProfile );
-app.post('/getProfileData', getProfileData.getProfileData );
+app.use('/', updateProfile );
+app.use('/', getProfileData );
+app.use('/', waitlist );
 
     
 app.listen(3001);

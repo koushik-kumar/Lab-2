@@ -38,6 +38,9 @@ const CoursesSchema= new mongoose.Schema({
         type : String,
         // required:true
     },
+    StudentsEnrolled: {
+        type:Number,
+    },
     CourseTerm : {
         type : String,
         required:true
