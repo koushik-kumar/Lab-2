@@ -3,6 +3,8 @@ const JWTStrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 var {Users} = require('./../model/users');
 var config = require('./../config/settings')
+var Model = require('../DatabaseConnection');
+
 
 
 module.exports = passport => {
@@ -21,5 +23,19 @@ module.exports = passport => {
                 return done(null, false);
             })
             .catch(err => console.error(err));
+
+
+            Model.Users.findOne({ 
+                'UserID': jwt_payload.UserID 
+            }, (err, user) => {
+                    if (user) {
+                        callback(null, user);
+                    }
+                    else {
+                        callback(err, false);
+                    }
+                });
     }));
+
+    
 }

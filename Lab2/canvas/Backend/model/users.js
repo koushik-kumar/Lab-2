@@ -68,6 +68,9 @@ const UserSchema = new mongoose.Schema({
     coursesEnrolled: {
         type: Array
     },
+    coursesWaitingList:{
+        type: Array
+    },
     Links: {
         type: String
     }

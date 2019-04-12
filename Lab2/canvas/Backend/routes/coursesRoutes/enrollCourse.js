@@ -14,11 +14,11 @@ routerr.post('/enrollCourse', (req, res) => {
         CourseID: req.body.CourseID
     }, async function (err, course) {
         if (err) {
-            console.log(err.message);
+            console.error(err.message);
             res.status(400);
             res.json({
                 status: false,
-                message: 'CourseID doesnt exist.'
+                message: 'Error in finding the course'
             })
         } else if (course) {
             console.log("Course: ")
@@ -72,7 +72,7 @@ routerr.post('/enrollCourse', (req, res) => {
                 Users.findOneAndUpdate(
                     {UserID: req.body.UserID},
                     {"$push": {
-                        coursesEnrolled : {
+                        coursesWaitingList : {
                             "CourseID": req.body.CourseID,
                             "TeacherID": req.body.TeacherID,
                             "EnrollmentStatus" : enrollmentFlag

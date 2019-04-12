@@ -55,8 +55,6 @@ const CoursesSchema= new mongoose.Schema({
     Quizzes : {
         type : Array
     }
-
-
 })
 
 var Courses = mongoose.model('Course',CoursesSchema);

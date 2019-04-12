@@ -26,11 +26,12 @@ var Assignments = require('./model/assignments');
 var Quiz = require('./model/quiz');
 var Questions = require('./model/questions');
 var QResponse = require('./model/qResponse');
-var waitlist = require('./routes/coursesRoutes/waitlist')
+var permissionNumber = require('./routes/coursesRoutes/permissionNumber')
 var login = require('./routes/loggingRoutes/login')
 var register = require('./routes/loggingRoutes/register');
 var createCourse = require('./routes/coursesRoutes/createCourse');
 var enrollCourse = require('./routes/coursesRoutes/enrollCourse');
+var enrollWaitlistCourses = require('./routes/coursesRoutes/enrollWaitlistCourses');
 var getCourses = require('./routes/coursesRoutes/getCourses');
 var updateProfile = require('./routes/loggingRoutes/updateProfile');
 var getProfileData = require('./routes/loggingRoutes/getProfileData')
@@ -75,9 +76,11 @@ app.use('/',login);
 app.use('/', createCourse);
 app.use('/', getCourses);
 app.use('/', enrollCourse);
+app.use('/', enrollWaitlistCourses );
 app.use('/', updateProfile );
 app.use('/', getProfileData );
-app.use('/', waitlist );
+app.use('/', permissionNumber );
+
 
     
 app.listen(3001);
