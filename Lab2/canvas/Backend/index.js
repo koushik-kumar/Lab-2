@@ -37,6 +37,9 @@ var updateProfile = require('./routes/loggingRoutes/updateProfile');
 var getProfileData = require('./routes/loggingRoutes/getProfileData')
 var files = require('./routes/assignments/files')
 var seeFolders = require('./routes/assignments/seeFolders')
+var assignmentFiles = require('./routes/assignments/assignment_files')
+var createAssignment = require('./routes/assignments/createAssignment')
+var getAssignment = require('./routes/assignments/getAssignment')
 
 
 
@@ -84,6 +87,9 @@ app.use('/', getProfileData );
 app.use('/', permissionNumber );
 app.use('/', files );
 app.use('/', seeFolders );
+app.use('/', assignmentFiles );
+app.use('/', createAssignment );
+app.use('/', getAssignment );
 
 
     

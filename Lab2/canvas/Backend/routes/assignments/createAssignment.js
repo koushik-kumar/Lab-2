@@ -1,11 +1,11 @@
 var router = require('express').Router();
-var con = require('../db/sql')
+var Model = require('./../../DatabaseConnection');
+
 router.post('/createassignment',function(req,res){
-    console.log(req.body)
+    console.log("Inside create assignment"+req.body)
     
 
-  const Courselist  = require('../models/Courses');
-  Courselist.find({courseid:req.body.courseid}, {_id:0, assignments: 1}, (err, results) => {
+  Model.Courses.find({CourseID:req.body.CourseID}, {_id:0, assignments: 1}, (err, results) => {
     
     if(err){
       console.log("Error finding mongo results for assignments");
@@ -27,8 +27,8 @@ router.post('/createassignment',function(req,res){
      console.log("max_id",parseInt(max_id)+1)
      console.log(results[0].assignments)
 
-    Courselist.findOneAndUpdate({
-      courseid: req.body.courseid
+     Model.Courses.findOneAndUpdate({
+      CourseID: req.body.CourseID
     }, {
       $push: {
           assignments: {
@@ -59,9 +59,6 @@ router.post('/createassignment',function(req,res){
   }
 
   })
-  //   con.query("INSERT INTO  assignmentlist(name,due,marks,courseid) VALUES(?,?,?,?)",[req.body.asgmnt_name,req.body.asgmnt_due,req.body.asgmnt_marks,req.body.courseid], function (err, result, fields) {
-  //     if (err) console.log(err)
-  // });
 
   });
 

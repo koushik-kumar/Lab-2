@@ -1,12 +1,13 @@
-const Courselist  = require('../models/Courses');
+// const Courselist  = require('../models/Courses');
+var Model = require('./../DatabaseConnection');
+
 function handle_request(msg, callback){
     console.log('Inside  Kafka Backend Login');
 
 
     console.log('Message', msg);
     
-    // console.log(courseid)
-    Courselist.find({courseid:msg.courseid}, {_id:0, assignments: 1}, (err, results) => {
+    Model.Courses.find({CourseID:msg.CourseID}, {_id:0, assignments: 1}, (err, results) => {
         if (results) {
     
                 console.log("in user",results)

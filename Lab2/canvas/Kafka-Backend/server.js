@@ -3,12 +3,15 @@ var connection = require('./kafka/Connection');
 
 var Login = require('./services/login')
 var Register = require('./services/register');
+var Register = require('./services/register');
 // var CreateCourse = require('./services/createCourse');
 // var EnrollCourse = require('./services/enrollCourse');
 // var EnrollWaitlistCourses = require('./services/enrollWaitlistCourses');
 var GetCourses = require('./services/getCourses');
 var UpdateProfile = require('./services/updateProfile');
 var GetProfileData = require('./services/getProfileData')
+var GetAssignment = require('./services/getassignment')
+var GetAssignmentDet = require('./services/getassignmentdet')
 // var PermissionNumber = require('./services/permissionNumber')
 
 function handleTopicRequest(topic_name,fname){
@@ -48,4 +51,6 @@ handleTopicRequest("register", Register);
 handleTopicRequest("getCourses", GetCourses);
 handleTopicRequest("updateProfile", UpdateProfile);
 handleTopicRequest("getProfileData", GetProfileData);
+handleTopicRequest("getassignment", GetAssignment);
+handleTopicRequest("getassignmentdet", GetAssignmentDet);
 // handleTopicRequest("permissionNumber", PermissionNumber);

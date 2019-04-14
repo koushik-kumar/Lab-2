@@ -1,10 +1,12 @@
 var router = require('express').Router();
-var con = require('../db/sql')
-var kafka = require('../kafka/client');
+var kafka = require('./../../kafka/client');
 
 router.post('/getassignment',function(req,res){
+
+  console.log("##########"+JSON.stringify(req.body))
   kafka.make_request('getassignment', req.body, function(err, result){
 
+    console.log("$$$$$$$$$$"+JSON.stringify(result)+"@@@@@@@")
     if(result){
       if(result.length>0){
        console.log("announcement results",result[0].assignments)
@@ -62,28 +64,5 @@ router.post('/getassignment',function(req,res){
        })
 
 
-      // const Courselist  = require('../models/Courses');
-  
-      // Courselist.find({courseid:req.body.courseid,"assignments.assignmentid":req.body.assignmentid}, {_id:0, assignments: 1}, (err, results) => {
-      //   if(err){
-      //     console.log("Error finding mongo results for announcements");
-      //     res.writeHead(400, {
-      //         'Content-Type': 'text/plain'
-      //     })
-      //     res.end("Error finding mongo results for announcements");
-      // }
-      //  else {
-         
-      //    arr = results[0].assignments
-      //    console.log("inarray",arr)
-      //    arr.forEach(function(assignment){
-      //     console.log(assignment)
-      //     if(assignment.assignmentid==req.body.assignmentid){
-      //       res.end(JSON.stringify([assignment]))
-      //     }
-      //    })
-        
-      //  }
-      // })
     })
     module.exports=router

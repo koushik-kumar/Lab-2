@@ -4,7 +4,6 @@ const gravatar = require('gravatar');
 
 const localStrategy = require('passport-local').Strategy;
 const jwt = require('jsonwebtoken');
-var {Users} = require('./../../model/users');
 var routerr = require('express').Router();
 var json = require('json');
 var config = require('./../../config/settings')

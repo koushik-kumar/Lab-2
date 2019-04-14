@@ -127,12 +127,91 @@ var Courses= mongoose.model('Courses', {
         type : String,
         // required:true
     }, 
-    Announcements : {
-        type : Array
-    },
-    Quizzes : {
-        type : Array
-    }
+    announcements:[{
+        anct_id: {
+            type:String
+            // required: [true, 'password is required,']
+        },
+        CourseID:{
+            type:String
+        },
+        anct_name: {
+            type:String
+            // required: [true, 'password is required,']
+        },
+        anct_details: {
+            type:String
+            // required: [true, 'password is required,']
+        },
+        anct_date: {
+            type:Date
+            // required: [true, 'password is required,']
+        }
+    }],
+    assignments:[{
+        assignmentid: {
+          type:String
+        },
+        name: {
+          type:String
+        },
+        due: {
+          type:Date
+        },
+        marks: {
+          type:Number
+        }
+    }],
+    quiz:[{
+        quizid: {
+            type:String
+        },
+        
+        name: {
+            type:String
+        },
+        due: {
+            type:Date
+        },
+        marks: {
+            type:Number
+        },
+        quiztaken:{
+            type:String
+        },
+        quizques:
+            [ {
+                quizquesid:{
+                    type:String
+                },
+                quizname: {
+                    type:String
+                },
+                quizquestion: {
+                    type:String
+                },
+                quizopt1: {
+                    type:String
+                },
+                quizopt2: {
+                    type:String
+                },
+                quizopt3: {
+                    type:String
+                },
+                quizopt4: {
+                    type:String
+                },
+                quizans:{
+                    type:String
+                },
+                quizopted: {
+                    type:String
+                }
+        }]
+    
+    }]
+
 });
 
 const permissionNbrs = mongoose.model('permissionNbrs', {
