@@ -26,6 +26,10 @@ routerr.post('/createCourse', (req, res) => {
         message: 'User doesnt exist.'
       })
     } else if (user) {
+      let codes = "0123456789ABCDEF"; 
+      let colorCode = '#'; 
+      for (var i = 0; i < 6; i++) 
+       colorCode += codes[(Math.floor(Math.random() * 16))];
 
       var now = new Date().now;
       var course = new Courses({
@@ -40,7 +44,7 @@ routerr.post('/createCourse', (req, res) => {
         "WaitlistCapacity": req.body.waitlist,
         "StudentsEnrolled" : 0,
         "CourseTerm": req.body.term,
-        "cardColor": req.body.color,
+        "cardColor": colorCode,
         "created": now
       })
 

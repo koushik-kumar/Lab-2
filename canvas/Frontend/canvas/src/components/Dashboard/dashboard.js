@@ -14,7 +14,7 @@ class Dashboard extends Component {
         this.state = {
             UserID : '',
             courses: [],
-            color:'000000',
+            color:'',
             courseNumber : '',
             courseTerm:'',
             shorterCourseName:''
@@ -87,8 +87,6 @@ class Dashboard extends Component {
         }
         
         return (
-            
-
             <div className="col col-sm-10" style={{position:"relative"}}>
                 <div className="kkk col-md-10 offset-md-1" style={{position:"absolute", paddingLeft:"5px"}} >
                     <div className="col-md-12" style={{paddingTop:"10px"}} >
@@ -104,13 +102,6 @@ class Dashboard extends Component {
                     </div>
                 </div>
             </div>
-
-
-
-                
-
-                
-           
         )
     }
 }

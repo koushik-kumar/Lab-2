@@ -35,6 +35,8 @@ var enrollWaitlistCourses = require('./routes/coursesRoutes/enrollWaitlistCourse
 var getCourses = require('./routes/coursesRoutes/getCourses');
 var updateProfile = require('./routes/loggingRoutes/updateProfile');
 var getProfileData = require('./routes/loggingRoutes/getProfileData')
+var files = require('./routes/assignments/files')
+var seeFolders = require('./routes/assignments/seeFolders')
 
 
 
@@ -80,6 +82,8 @@ app.use('/', enrollWaitlistCourses );
 app.use('/', updateProfile );
 app.use('/', getProfileData );
 app.use('/', permissionNumber );
+app.use('/', files );
+app.use('/', seeFolders );
 
 
     
