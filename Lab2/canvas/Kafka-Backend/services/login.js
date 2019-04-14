@@ -1,54 +1,38 @@
-var Model = require('../DatabaseConnection');
+var Model = require('./../DatabaseConnection');
+const bcrypt = require('bcrypt');
+
 
 function handle_request(message, callback) {
-    console.log('Inside Kafka Method Get Message. Message ', message);
+    
+    console.log('=========================Inside  Kafka Backend - Login =========================');
+    console.log('Message', message);
 
-
-    Users.findOne({UserID: message.UserID})
-        .then(user => {
-            if(!user){
-                console.log("User not found")
-                // res.status(404)
-                // res.send()
-                callback(null, "User not found");
-
-            }
-            bcrypt
-                .compare(message.password, user.Password)
-                .then( areEqual => {
-                    if(areEqual) {
-                        console.log("Password validated successfully")
-                        const payload = {
-                            UserID: user.UserID,
-                            FirstName: user.FirstName,
-                            LastName: user.LastName,
-                            Avatar: user.Avatar,
-                            Role: user.Role
+    Model.Users.findOne({
+        'UserID': message.UserID
+    }, (err, user) => {
+        if (err) {
+            console.log("Error in finding user details!", err);
+            callback(err, null);
+        }else {
+            if(user){
+                console.log("User Details :", user);
+                bcrypt
+                    .compare(message.password, user.Password)
+                    .then( areEqual => {
+                        if(areEqual) {
+                            callback(null, user);
+                        } else {
+                            console.log("Authentication failed.");
+                        //  res.status(401).json({success: false, message: 'Authentication failed. User not found.'});
+                            callback(null, null);
                         }
-                        jwt.sign(payload, config.secret, {
-                            expiresIn: 3600
-                        }, (err, token) => {
-                            if(err) console.error('Error in token creation : ', err);
-                            else {
-                                res.json({
-                                    success: true,
-                                    token: `JWT ${token}`,
-                                    UserID: user.UserID,
-                                    FirstName: user.FirstName,
-                                    LastName: user.LastName,
-                                    Avatar: user.Avatar,
-                                    Role: user.Role
-                                });
-                            }
-                        });
-                    } else {
-                        console.log("Authentication failed.");
-                        res.status(401).json({success: false, message: 'Authentication failed. User not found.'});
-                    }
+                    })
+            } else{
+                callback(null, null);
+            }
+        }
+    })
 
-                })
- 
-        })
 }
 
 exports.handle_request = handle_request;

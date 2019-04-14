@@ -159,7 +159,7 @@ const permissionNbrs = mongoose.model('permissionNbrs', {
 })
 
 
-var Question = mongoose.model('Question', {
+var Question= mongoose.model('Question', {
     QID : {
         type : String,
         required:true

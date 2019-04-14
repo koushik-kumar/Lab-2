@@ -1,15 +1,15 @@
 var connection = require('./kafka/Connection');
 
 
-var Login = require('./services/loggingRoutes/login')
-var Register = require('./services/loggingRoutes/register');
-var CreateCourse = require('./services/coursesRoutes/createCourse');
-var EnrollCourse = require('./services/coursesRoutes/enrollCourse');
-var EnrollWaitlistCourses = require('./services/coursesRoutes/enrollWaitlistCourses');
-var GetCourses = require('./services/coursesRoutes/getCourses');
-var UpdateProfile = require('./services/loggingRoutes/updateProfile');
-var GetProfileData = require('./services/loggingRoutes/getProfileData')
-var PermissionNumber = require('./services/coursesRoutes/permissionNumber')
+var Login = require('./services/login')
+var Register = require('./services/register');
+// var CreateCourse = require('./services/createCourse');
+// var EnrollCourse = require('./services/enrollCourse');
+// var EnrollWaitlistCourses = require('./services/enrollWaitlistCourses');
+var GetCourses = require('./services/getCourses');
+var UpdateProfile = require('./services/updateProfile');
+var GetProfileData = require('./services/getProfileData')
+// var PermissionNumber = require('./services/permissionNumber')
 
 function handleTopicRequest(topic_name,fname){
     var consumer = connection.getConsumer(topic_name);
@@ -42,10 +42,10 @@ function handleTopicRequest(topic_name,fname){
 
 handleTopicRequest("login", Login);
 handleTopicRequest("register", Register);
-handleTopicRequest("createCourse", CreateCourse);
-handleTopicRequest("enrollCourse", EnrollCourse);
-handleTopicRequest("enrollWaitlistCourses", EnrollWaitlistCourses);
+// handleTopicRequest("createCourse", CreateCourse);
+// handleTopicRequest("enrollCourse", EnrollCourse);
+// handleTopicRequest("enrollWaitlistCourses", EnrollWaitlistCourses);
 handleTopicRequest("getCourses", GetCourses);
 handleTopicRequest("updateProfile", UpdateProfile);
 handleTopicRequest("getProfileData", GetProfileData);
-handleTopicRequest("permissionNumber", PermissionNumber);
+// handleTopicRequest("permissionNumber", PermissionNumber);

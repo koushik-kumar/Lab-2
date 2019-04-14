@@ -1,37 +1,42 @@
 var routerr = require("express").Router();
-var { Users } = require("./../../model/users");
-var { Courses } = require("../../model/courses");
-var json = require("json");
+var kafka = require('./../../kafka/client');
+var passport = require('passport');
+
+var requireAuth = passport.authenticate('jwt', {session: false});
+
 
 // var connection = require("../../config/mysqlDBConfig.js");
-routerr.post("/getProfileData", function(req, res) {
-  console.log("Inside getProfileData");
+routerr.post("/getProfileData", requireAuth, function (req, res) {
 
-  console.log(JSON.stringify(req.body));
-  id = JSON.stringify(req.body.UserID);
-  console.log("getting profile data of " + id);
+  console.log('=========================Inside Backend - Get Profile Data =========================');
+  console.log('Request Body: ', req.body);
 
-  Users.findOne(
-    {
-      UserID: req.body.UserID
-    },
-    function(err, user) {
-      if (err) {
-        console.log(err.message);
-        res.status(400);
-        res.json({
-          status: false,
-          message: "UserID doesnt exist."
-        });
-      } else if (user) {
-        console.log("User Details");
-        console.log(user);
-        res.status(200);
-        res.send(user).end();
-      }
-    }
-  );
+  kafka.make_request('getProfileData', req.body, function (err, result) {
 
-});
+    console.log('========================= In the make request - Get Profile Data =========================');
+    console.log('results', result);
 
+    if (err) {
+      console.log('Error in getting profile data');
+      res.writeHead(400, {
+        'Content-type': 'text/plain'
+      });
+      res.end('Error in getting profile data');
+    } else if (result) {
+      console.log("User details rendered successfully");
+      res.writeHead(200, {
+        'Content-type': 'text/plain'
+      });
+      res.end(JSON.stringify(result));
+    } else if (result == null) {
+      console.log("User doesn't exist");
+      res.writeHead(210, {
+        'Content-type': 'text/plain'
+      });
+      res.end('User does not exist');
+  }
+
+
+  })
+})
 module.exports = routerr;

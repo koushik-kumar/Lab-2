@@ -1,36 +1,25 @@
-var connection = require('../../config/mysqlDBConfig.js');
 var routerr = require("express").Router();
-var { Users } = require('./../../model/users');
+var kafka = require('./../../kafka/client');
 
+routerr.post("/updateProfile", function (req, res) {
 
-var json = require('json');
-
-// module.exports.updateProfile = function(req,res){
-routerr.post("/updateProfile", function(req, res) {
-
-
-
-  id = JSON.stringify(req.body.UserID);
-  console.log("Inside profile update module");
-  console.log("111111: "+req.body.contact+" 2222: "+req.body.biography+" 3333: "+req.body.links);
-
-  Users.findOneAndUpdate(
-    {UserID: req.body.UserID},
-    {
-      $set : {
-        "PhoneNo" :req.body.contact,
-        "AboutMe" :req.body.biography,
-        "Links" : req.body.links
-      }
-    },
-    {new : true},
-    function (err, doc) {
-      console.log("HUUHUHHUHHUHUHHU"+doc)
-      res.send({ error: err, affected: doc });
-      // db.close();
-  }
-  )
-
+  kafka.make_request('updateProfile', req.body, function (err, result) {
+    console.log('========================= In the backend make request - Update Profile =========================');
+    // console.log('results', result);
+    if (err) {
+      console.log('Error updating profile!');
+      res.writeHead(400, {
+        'Content-type': 'text/plain'
+      });
+      res.end('Error updating profile!');
+    } else if (result) {
+      console.log("Profile updated successfully.");
+      res.writeHead(200, {
+        'Content-type': 'text/plain'
+      });
+      res.end(JSON.stringify(result));
+    }
+  })
 })
 
 module.exports = routerr;
